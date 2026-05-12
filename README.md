@@ -1,157 +1,54 @@
-You are an expert Python developer with geospatial analysis experience (rasterio, NumPy, pandas, matplotlib).
+Objective 1: Standalone Satellite-Based DTM for Rapid Landslide Cut-and-Fill Estimation and Cost Range Prediction
+Purpose
 
-I already have a working Python script that performs Monte Carlo-based volumetric change analysis using multi-temporal DTM rasters.
+Develop a rapid terrain assessment framework using Remote Sensing Digital Terrain Models (RS-DTM) derived solely from satellite imagery, without requiring field reference data.
 
-Please EXTEND the existing code to include **cut and fill volume analysis**, while keeping the current structure clean and modular.
+Key Points
+Utilize satellite-derived DTM as an independent terrain information source.
+Estimate cut-and-fill volumes immediately after landslide/disaster events.
+Apply Monte Carlo Simulation to account for terrain uncertainty and elevation variability.
+Generate:
+Minimum cut-and-fill estimation
+Maximum cut-and-fill estimation
+Probabilistic volume distribution
+Convert volume estimations into cost range predictions for emergency recovery planning.
+Enable rapid decision-making for:
+Disaster response teams
+Infrastructure rehabilitation planning
+Budget allocation estimation
+Initial feasibility analysis
+Expected Contribution
+Provides a fast, low-cost, and scalable alternative when LiDAR/UAV surveys are unavailable.
+Supports immediate post-disaster engineering assessment with quantifiable uncertainty bounds.
+Objective 2: Integrated RS-DTM and UAV LiDAR Framework for Construction Progress Monitoring and Accuracy Calibration
+Purpose
 
----
+Establish a calibrated monitoring framework by integrating satellite-derived DTM (RS-DTM) with UAV LiDAR reference data to evaluate cut-and-fill accuracy during construction activities.
 
-### NEW REQUIREMENTS: CUT & FILL ANALYSIS
+Key Points
+Use UAV LiDAR-derived DTM as the high-accuracy reference benchmark.
+Compare temporal terrain changes captured by:
+RS-DTM
+LiDAR-UAV DTM
+Quantify elevation and volume discrepancies between both datasets.
+Evaluate:
+Vertical accuracy error
+Volume estimation deviation
+Spatial consistency
+Monitor cut-and-fill progress over defined construction periods.
+Develop an error calibration model for correcting RS-DTM outputs.
+Determine whether RS-DTM accuracy is sufficient for:
+Construction monitoring
+Earthwork progress tracking
+Practical engineering volume estimation
+Expected Contribution
+Defines the reliability threshold of satellite-based DTM for engineering applications.
+Provides correction factors for future RS-DTM implementation.
+Enables cost-efficient large-area construction monitoring where frequent LiDAR acquisition is impractical.
+Optional Overall Research Title (for first slide)
 
-#### 1. Definitions
+Probabilistic Cut-and-Fill Estimation and Construction Monitoring Using Satellite-Derived Digital Terrain Models with UAV LiDAR Validation
 
-* **Fill volume** = sum of positive DoD values
-* **Cut volume** = sum of negative DoD values (report as positive magnitude)
-* **Net volume** = fill − cut (already exists)
+Or shorter and stronger:
 
----
-
-#### 2. Modify volume computation
-
-Update or extend the volume computation function so that for each DoD it returns:
-
-* net_volume
-* cut_volume
-* fill_volume
-
-Use efficient NumPy operations:
-
-* Fill → DoD > 0
-* Cut → DoD < 0
-
----
-
-#### 3. Monte Carlo output
-
-During Monte Carlo simulation, store for each simulation and timestep:
-
-* net_volume
-* cut_volume
-* fill_volume
-
-Structure:
-
-```text
-simulation_id, time, net_volume, cut_volume, fill_volume
-```
-
----
-
-#### 4. Summary statistics
-
-At the end, compute for each timestep:
-
-* mean_net_volume
-
-* std_net_volume
-
-* min_net_volume
-
-* max_net_volume
-
-* mean_cut_volume
-
-* std_cut_volume
-
-* mean_fill_volume
-
-* std_fill_volume
-
-Output CSV format:
-
-```text
-time,
-mean_net_volume,std_net_volume,min_net_volume,max_net_volume,
-mean_cut_volume,std_cut_volume,
-mean_fill_volume,std_fill_volume
-```
-
----
-
-#### 5. Plots
-
-Add the following plots:
-
-### (A) Net volume time series (already exists)
-
-* Mean line
-* ± standard deviation shaded band
-
-### (B) Cut and Fill time series (NEW)
-
-* Two lines:
-
-  * Fill volume
-  * Cut volume
-* Optional: add ± std shading for both
-
-### (C) Optional (preferred)
-
-* Combined plot:
-
-  * Net, Cut, Fill in one figure
-
-### (D) Histogram (existing)
-
-* Final timestep distribution (net volume)
-
----
-
-#### 6. Code structure
-
-* Keep functions modular:
-
-  * compute_volume → extend or create new function (compute_cut_fill)
-  * run_monte_carlo → store all 3 metrics
-  * summarize_results → include all statistics
-
-* Avoid pixel-wise loops (use NumPy masking)
-
----
-
-#### 7. Output files
-
-Save:
-
-* volume_summary.csv (extended with cut/fill)
-* volume_detailed.csv (extended structure)
-* volume_timeseries_uncertainty.png
-* cut_fill_timeseries.png (NEW)
-* optional combined plot
-
----
-
-#### 8. Maintain compatibility
-
-* Do NOT break existing functionality
-* Keep argument structure the same
-* Ensure backward compatibility
-
----
-
-### GOAL
-
-The final script should support:
-
-✔ Net volume
-✔ Cut & fill volumes
-✔ Uncertainty propagation (Monte Carlo)
-✔ Publication-ready outputs (CSV + plots)
-
----
-
-Please provide:
-
-1. Updated Python code
-2. Explanation of new functions/changes
-3. Example outputs
+Satellite-Derived DTM for Cut-and-Fill Estimation: Monte Carlo Uncertainty Analysis and UAV LiDAR Validation for Disaster and Construction Applications
