@@ -1,54 +1,11 @@
-Objective 1: Standalone Satellite-Based DTM for Rapid Landslide Cut-and-Fill Estimation and Cost Range Prediction
-Purpose
+The method developed by Julzarika (2021) was used to establish the DTM. In this study, a high-resolution terrain model was generated using remote sensing techniques based on satellite imagery. This was accomplished by mosaicking the satellite data to develop an initial DTM, which was subsequently refined using up-to-date vertical deformation information (Julzarika, 2021) (Fig. 3). The initial DTM served as the baseline for producing the remote-sensing-based DTM (RS-DTM). The process began with the generation of a digital surface model (DSM), customised according to the input data type, such as satellite imagery, aerial photographs, synthetic aperture radar (SAR) (Rucci et al., 2012), stereo images, interferometry, LiDAR, videogrammetry, terrestrial surveys, and other sensor-based mapping data. Accordingly, the accuracy and precision of the DSM were influenced by the quality of these input sources (Julzarika & Harintaka, 2019).
 
-Develop a rapid terrain assessment framework using Remote Sensing Digital Terrain Models (RS-DTM) derived solely from satellite imagery, without requiring field reference data.
+In this study, the DSM was generated primarily from WorldView-2 imagery acquired on 2 June 2022. The methodology is generally applicable to other high-resolution optical datasets, including aerial photographs, unmanned aerial vehicle (UAV) imagery, PlanetScope, WorldView series imagery, and other stereoscopic satellite observations. DSM extraction was performed through stereoscopic photogrammetric processing, including reverse stereo and stereo-model generation, whereby image pairs acquired from different viewing geometries were used to reconstruct three-dimensional surface elevations. Multi-view photogrammetry, triplet imagery, videogrammetry, and satellite-derived bathymetry (SDB), where applicable, may also contribute to DSM generation. In addition, SAR-based elevation information derived from Sentinel-1 data through Interferometric SAR (InSAR) processing was incorporated to improve surface representation and support DSM extraction.
 
-Key Points
-Utilize satellite-derived DTM as an independent terrain information source.
-Estimate cut-and-fill volumes immediately after landslide/disaster events.
-Apply Monte Carlo Simulation to account for terrain uncertainty and elevation variability.
-Generate:
-Minimum cut-and-fill estimation
-Maximum cut-and-fill estimation
-Probabilistic volume distribution
-Convert volume estimations into cost range predictions for emergency recovery planning.
-Enable rapid decision-making for:
-Disaster response teams
-Infrastructure rehabilitation planning
-Budget allocation estimation
-Initial feasibility analysis
-Expected Contribution
-Provides a fast, low-cost, and scalable alternative when LiDAR/UAV surveys are unavailable.
-Supports immediate post-disaster engineering assessment with quantifiable uncertainty bounds.
-Objective 2: Integrated RS-DTM and UAV LiDAR Framework for Construction Progress Monitoring and Accuracy Calibration
-Purpose
+Following DSM generation, several elevation correction procedures were applied to minimise systematic errors and convert the surface model into a terrain model. These corrections included height-error adjustment, geoid undulation correction, tidal correction where relevant, and DSM-to-DTM conversion procedures to remove non-terrain objects and improve topographic consistency. The corrected terrain surface was subsequently designated as the DTM Master, which served as the primary reference dataset for subsequent deformation integration and terrain refinement processes.
 
-Establish a calibrated monitoring framework by integrating satellite-derived DTM (RS-DTM) with UAV LiDAR reference data to evaluate cut-and-fill accuracy during construction activities.
+In addition, vertical deformation data were derived from Sentinel-1 synthetic aperture radar (SAR) images using the Modified Differential Interferometric SAR (D-InSAR) method (Massonnet & Feigl, 1998; Zebker & Goldstein, 1986) between 9 June 2022 and 25 November 2024, indicating areas of uplift and subsidence. Through differential interferometric processing, phase differences between SAR acquisitions were analysed to detect temporal ground-surface displacement. The D-InSAR outputs represented displacement along the radar line-of-sight (LoS) direction. However, LoS displacement could not be interpreted directly as vertical deformation because it contains both horizontal and vertical components of ground movement relative to the satellite viewing geometry. To isolate the vertical component, the LoS displacement values were corrected using the radar incidence angle and satellite acquisition geometry. Following the approach described by Suhadha et al. (2022), the corrected LoS displacement was projected into true vertical deformation, resulting in a spatially distributed deformation surface representing actual ground uplift and subsidence.
 
-Key Points
-Use UAV LiDAR-derived DTM as the high-accuracy reference benchmark.
-Compare temporal terrain changes captured by:
-RS-DTM
-LiDAR-UAV DTM
-Quantify elevation and volume discrepancies between both datasets.
-Evaluate:
-Vertical accuracy error
-Volume estimation deviation
-Spatial consistency
-Monitor cut-and-fill progress over defined construction periods.
-Develop an error calibration model for correcting RS-DTM outputs.
-Determine whether RS-DTM accuracy is sufficient for:
-Construction monitoring
-Earthwork progress tracking
-Practical engineering volume estimation
-Expected Contribution
-Defines the reliability threshold of satellite-based DTM for engineering applications.
-Provides correction factors for future RS-DTM implementation.
-Enables cost-efficient large-area construction monitoring where frequent LiDAR acquisition is impractical.
-Optional Overall Research Title (for first slide)
+The derived true vertical deformation layer was subsequently integrated with the DTM Master to update terrain elevations and generate a temporally corrected topographic model. Where available, terrestrial mapping products, field-survey data, LiDAR measurements, GNSS observations, or other ground-based topographic datasets may also be incorporated during this integration stage to further improve vertical accuracy and terrain representation. The integration process combines the static terrain information represented by the DTM Master with dynamic ground-surface changes detected from SAR observations, thereby producing a terrain model that reflects both topographic conditions and ongoing geomorphological deformation.
 
-Probabilistic Cut-and-Fill Estimation and Construction Monitoring Using Satellite-Derived Digital Terrain Models with UAV LiDAR Validation
-
-Or shorter and stronger:
-
-Satellite-Derived DTM for Cut-and-Fill Estimation: Monte Carlo Uncertainty Analysis and UAV LiDAR Validation for Disaster and Construction Applications
+To ensure the reliability of the resulting terrain model, an iterative validation procedure was performed following the framework proposed by Julzarika (2021). The integrated DTM was assessed against predefined vertical accuracy criteria using a 95% confidence level, commonly expressed through the Linear Error at 95% confidence (LE95) statistic in geodetic and topographic accuracy assessment. The validation stage evaluated whether the integrated terrain model satisfied the required positional and vertical accuracy thresholds. If the accuracy criteria were not achieved, the process was repeated by refining the DTM Master and recalculating the vertical deformation component until the required accuracy level was obtained. Once the integrated model satisfied the validation criteria at the 95% confidence level, the final Remote-Sensing-Based Digital Terrain Model (RS-DTM) was produced and used for subsequent geomorphological and environmental analyses.
